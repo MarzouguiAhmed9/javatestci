@@ -4,7 +4,7 @@ public class Main {
     public static void main(String[] args) {
         // Press Alt+Entrée with your caret at the highlighted text to see how
         // IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hellbvco ahmed");
+        System.out.printf("zebi Hellbvco ahmed");
 
 
     }
