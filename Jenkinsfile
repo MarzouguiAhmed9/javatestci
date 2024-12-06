@@ -2,23 +2,27 @@ pipeline {
     agent any 
 
     stages {
-        stage("Build") {
+        stage("build") {
             steps {
-                // Navigate to the src directory and compile the Java file
-                sh '''
-                cd src
-                javac Main.java
-                '''
+                script {
+                    sh 'cd javatestci/src && javac Main.java'
+                }
             }
         }
 
-        stage("Run") {
+        stage("run") {
             steps {
-                // Run the compiled Java program
-                sh '''
-                cd src
-                java Main
-                '''
+                script {
+                    sh 'cd javatestci/src && java Main'
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            script {
+                deleteDir()
             }
         }
     }
