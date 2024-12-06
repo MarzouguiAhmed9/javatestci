@@ -2,18 +2,20 @@ pipeline {
     agent any 
 
     stages {
-        stage("build") {
+        stage("Build") {
             steps {
                 script {
-                    sh 'cd javatestci/src && javac Main.java'
+                    // Correcting the path: no 'javatestci' directory, just 'src'
+                    sh 'cd src && javac Main.java'
                 }
             }
         }
 
-        stage("run") {
+        stage("Run") {
             steps {
                 script {
-                    sh 'cd javatestci/src && java Main'
+                    // Correcting the path again for running the program
+                    sh 'cd src && java Main'
                 }
             }
         }
@@ -22,7 +24,7 @@ pipeline {
     post {
         always {
             script {
-                deleteDir()
+                deleteDir() // Clean up the workspace after the build
             }
         }
     }
